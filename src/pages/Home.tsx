@@ -15,7 +15,10 @@ const Home = () => {
                   expertly curated artisan coffees from our best roasters
                   delivered directly to your door, at your schedule.
                 </p>
-                <a href="#0" className="btn-main">
+                <a
+                  href={`${process.env.PUBLIC_URL}/subscribe`}
+                  className="btn-main"
+                >
                   Create your plan
                 </a>
               </div>
@@ -214,7 +217,10 @@ const Home = () => {
                 </div>
               </div>
               <div className="how-it-works-area__btn">
-                <a href="#0" className="btn-main">
+                <a
+                  href={`${process.env.PUBLIC_URL}/subscribe`}
+                  className="btn-main"
+                >
                   Create your plan
                 </a>
               </div>

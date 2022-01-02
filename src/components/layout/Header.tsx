@@ -14,7 +14,9 @@ const Header = () => {
       <div className="container">
         <div className="row justify-content-space-between align-items-center">
           <div className="header-area__logo">
-            <Logo />
+            <a href={`${process.env.PUBLIC_URL}/`}>
+              <Logo />
+            </a>
           </div>
           <div className="header-area__navigation">
             <Navbar />

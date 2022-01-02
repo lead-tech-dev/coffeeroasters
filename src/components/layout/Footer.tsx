@@ -12,7 +12,9 @@ const Footer = () => {
         <div className="row justify-content-space-between align-items-center">
           <div className="footer-area__left">
             <div className="logo">
-              <Logo />
+              <a href={`process.env.PUBLIC_URL`}>
+                <Logo />
+              </a>
             </div>
             <div className="navigation">
               <Navbar />

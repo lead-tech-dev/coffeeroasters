@@ -56,10 +56,9 @@ const Header = () => {
             )}
 
             <div className="mobile-menu">
-              <Navbar />
-              <a href="#0" className="btn-main">
-                Create your plan
-              </a>
+              <div className="inner">
+                <Navbar />
+              </div>
             </div>
           </div>
         </div>

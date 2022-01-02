@@ -88,23 +88,28 @@
 }
 
 .collection-area {
-  padding: 137px 85px 200px 85px;
+  position: relative;
+  .row {
+    padding: 137px 85px 200px 85px;
 
-  @include tablet {
-    padding: 144px 40px 144px 39px;
-  }
+    @include tablet {
+      padding: 144px 40px 144px 39px;
+    }
 
-  @include tablet {
-    padding: 120px 0;
+    @include tablet {
+      padding: 120px 0;
+    }
   }
   &__title {
+    position: absolute;
     height: 196px;
+    width: 100%;
+    left: 0;
     padding-top: 42px;
-    padding-left: 85px;
-    padding-right: 85px;
-    opacity: 0.4;
-    background: linear-gradient(to bottom, rgba(199, 174, 113, 0), #fefcf7);
 
+    background: linear-gradient(to bottom, #e2e2df 30%, #fefcf7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     @include tablet {
       padding-top: 27px;
       padding-left: 0;
@@ -118,16 +123,31 @@
     }
 
     h1 {
-      font-size: 7.6rem;
+      font-family: $fraunces;
+      font-size: $fs-150;
       line-height: 10rem;
-      color: $grey;
+      color: $dark-grey-blue;
+      font-weight: $black;
       width: 100%;
+      text-align: center;
 
-      @include tablet {
-        font-size: 5.53rem;
+      @media (max-width: 1084px) {
+        font-size: 7.83rem;
       }
 
       @include tablet {
+        font-size: 5.83rem;
+      }
+
+      // @media (max-width: 664px) {
+      //   font-size: 4.93rem;
+      // }
+
+      // @media (max-width: 561px) {
+      //   font-size: 3.93rem;
+      // }
+
+      @include mobile {
         font-size: 2.96rem;
         line-height: 1;
       }
@@ -138,16 +158,16 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    margin-top: -53px;
+    margin-top: 158px;
     z-index: 99;
 
     @include tablet {
       grid-template-columns: 1fr;
-      margin-top: -64px;
+      margin-top: 129px;
     }
 
     @include mobile {
-      margin-top: -132px;
+      margin-top: 109px;
     }
 
     .list-item {

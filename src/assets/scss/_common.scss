@@ -1,0 +1,307 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: $barlow;
+  font-weight: $regular;
+  font-size: $fs-16;
+  line-height: $lh-26;
+
+  background-color: $light-cream;
+  color: $dark-grey-blue;
+  overflow-x: hidden;
+}
+
+/*=============================================
+=            REUSABLE COMPONENTS            =
+=============================================*/
+
+.container {
+  max-width: 90rem; //1440px;
+  padding: 0 5rem; //0 80px
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 48rem;
+    padding: 0 39px;
+  }
+
+  @include mobile {
+    max-width: 23.438rem;
+    padding: 0 24px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+ul {
+  outline: outset none none;
+}
+
+/*=============================================
+=                    HEADING                =
+=============================================*/
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $fraunces;
+  font-weight: $bold;
+  color: $dark-grey-blue;
+  margin: 0;
+}
+
+h1 {
+  font-size: $fs-72;
+  line-height: $lh-72;
+}
+
+h2 {
+  font-size: $fs-40;
+  line-height: $lh-48;
+}
+
+h3 {
+  font-size: $fs-32;
+  line-height: $lh-36;
+}
+
+h4 {
+  font-size: $fs-24;
+  line-height: $lh-32;
+}
+
+/*=============================================
+=                  PARAGRAPH                =
+=============================================*/
+
+p {
+  font-family: $barlow;
+  font-size: $fs-16;
+  font-weight: $regular;
+  line-height: $lh-26;
+  margin: 0;
+
+  color: $dark-grey-blue;
+}
+
+/*=============================================
+=                     LINKS                 =
+=============================================*/
+
+a:focus {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  color: $dark-cyan;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $dark-cyan;
+    text-decoration: none;
+    outline: none;
+  }
+
+  &.active {
+    color: $dark-cyan;
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+/*=============================================
+=                     BUTTONS                 =
+=============================================*/
+
+a.btn-main:link,
+a.btn-main:visited {
+  display: inline-block;
+  padding: 15px 31px 16px;
+  background-color: $dark-cyan;
+  color: $light-cream;
+  border-radius: 6px;
+  font-size: $fs-18;
+  border: none;
+  line-height: $lh-26;
+  font-weight: $semi-bold;
+  text-decoration: none;
+  transition: background-color 0.2s border 0.2s color 0.2s;
+
+  &.disabled {
+    pointer-events: none;
+    background-color: $bg-btn-disabled-color;
+  }
+
+  &:hover,
+  &:active {
+    background-color: $bg-btn-hover-color;
+  }
+}
+
+/*=============================================
+=          BIG SELECTION OPTION             =
+=============================================*/
+
+a.option:link,
+a.option:visited {
+  display: inline-block;
+  width: 100%;
+  height: 250px;
+  background-color: $bg-big-option-color;
+  border-radius: 8px;
+  margin: 28px 0;
+
+  transition: background-color 0.2s color 0.2s border 0.2s;
+
+  @include mobile {
+    margin: 0;
+    height: 158px;
+  }
+
+  &:hover {
+    background-color: $pale-orange;
+  }
+
+  &.active {
+    background-color: $dark-cyan;
+    pointer-events: none;
+    h4 {
+      color: $light-cream;
+    }
+
+    p {
+      color: $light-cream;
+    }
+  }
+
+  .inner {
+    //padding: 32px 28px 84px;
+    padding: 32px 17px 22px;
+    width: 100%;
+    height: 100%;
+
+    @include mobile {
+      padding: 24px;
+    }
+
+    h4 {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+/*=============================================
+=               ACCORDION MENU              =
+=============================================*/
+
+.list-accordion {
+  width: 100%;
+  //background-color: $bg-btn-hover-color;
+
+  &.open {
+    .dropdown svg {
+      transform: rotate(180deg);
+    }
+    .content {
+      height: 306px;
+      transition: height 0.2s cubic-bezier(0.5, 0, 0.1, 1);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 21px;
+      visibility: visible;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+        height: 524px;
+        grid-row-gap: 16px;
+      }
+    }
+  }
+
+  &.disabled {
+    h2 {
+      color: $bg-btn-disabled-color;
+    }
+
+    svg {
+      pointer-events: none;
+      transform: rotate(0deg);
+
+      path {
+        fill: $bg-btn-disabled-color;
+      }
+    }
+  }
+
+  .dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 0;
+
+    svg {
+      cursor: pointer;
+
+      path {
+        transition: background-color 0.2s color 0.2s;
+        &:hover {
+          fill: $bg-btn-hover-color;
+        }
+      }
+    }
+
+    h2 {
+      @include mobile {
+        font-size: 28px;
+        line-height: 1.17;
+        width: 90%;
+      }
+    }
+  }
+  .content {
+    position: relative;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 0;
+
+    transition: all 0.2s cubic-bezier(0.5, 0, 0.1, 1);
+
+    visibility: hidden;
+    overflow: hidden;
+  }
+}
+/*=====  End of END REUSABLE COMPONENTS  ======*/

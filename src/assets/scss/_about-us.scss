@@ -8,8 +8,8 @@
     }
   }
   &__info {
-    flex: 0 0 40%;
-    max-width: 40%;
+    flex: 0 0 100%;
+    max-width: 100%;
     z-index: 99;
 
     @include tablet {
@@ -26,11 +26,13 @@
     h2 {
       color: $light-cream;
       margin-bottom: 24px;
+      width: 400px;
       @include tablet {
         font-size: $fs-32;
       }
 
       @include mobile {
+        width: 100%;
         font-size: 28px;
         line-height: 1;
       }
@@ -38,10 +40,15 @@
 
     p {
       color: $light-cream;
-
+      width: 400px;
       @include tablet {
         font-size: $fs-15;
         line-height: 1.67;
+      }
+
+      @include mobile {
+        width: 100%;
+        text-align: center;
       }
     }
   }

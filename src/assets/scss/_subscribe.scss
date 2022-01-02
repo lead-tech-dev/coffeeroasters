@@ -13,8 +13,8 @@
   }
 
   &__info {
-    flex: 0 0 45%;
-    max-width: 45%;
+    flex: 0 0 100%;
+    max-width: 100%;
     z-index: 99;
 
     @include tablet {
@@ -31,22 +31,30 @@
     h1 {
       color: $light-cream;
       margin-bottom: 32px;
+      width: 500px;
 
       @include tablet {
         font-size: $fs-48;
+        width: 400px;
       }
 
       @include mobile {
         font-size: $fs-40;
         line-height: 1;
+        width: 100%;
       }
     }
 
     p {
       color: $light-cream;
+      width: 500px;
       @include tablet {
         font-size: $fs-15;
         line-height: 1.67;
+        width: 400px;
+      }
+      @include mobile {
+        width: 100%;
       }
     }
   }

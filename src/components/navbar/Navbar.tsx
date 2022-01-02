@@ -1,35 +1,33 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  useEffect(() => {
-    const navLink = document.querySelectorAll("li.nav-link");
-
-    navLink.forEach((item) => {
-      item.addEventListener("click", (e) => handleClick(e));
-    });
-  }, []);
-
-  const handleClick = (e: any) => {
-    const activeClass = document.querySelector(".active");
-
-    activeClass?.classList.remove("active");
-    e.target.classList.add("active");
-  };
+  const location = useLocation();
 
   return (
     <nav>
       <ul>
         <li className="nav-link">
-          <Link to={`${process.env.PUBLIC_URL}/`} className="active">
+          <Link
+            to={`${process.env.PUBLIC_URL}/`}
+            className={`${location.pathname === "/" ? "active" : ""}`}
+          >
             Home
           </Link>
         </li>
         <li className="nav-link">
-          <Link to={`${process.env.PUBLIC_URL}/about-us`}>About-us</Link>
+          <Link
+            to={`${process.env.PUBLIC_URL}/about-us`}
+            className={`${location.pathname === "/about-us" ? "active" : ""}`}
+          >
+            About-us
+          </Link>
         </li>
         <li className="nav-link">
-          <Link to={`${process.env.PUBLIC_URL}/subscribe`}>
+          <Link
+            to={`${process.env.PUBLIC_URL}/subscribe`}
+            className={`${location.pathname === "/subscribe" ? "active" : ""}`}
+          >
             Create your plan
           </Link>
         </li>

@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import AccordionData from "../data/subscribe-data.json";
+import Sticky from "react-sticky-el";
 
 interface contentData {
   id: number;
@@ -78,11 +79,25 @@ const Subscribe = () => {
       option[
         parentId === 2 ? parentId + 2 : parentId === 4 ? 4 : parentId + 1
       ].open = true;
+
+      option[
+        parentId === 2 ? parentId + 2 : parentId === 4 ? 4 : parentId + 1
+      ].active = true;
     } else {
       option[parentId === 4 ? 4 : parentId + 1].open = true;
+      option[parentId === 4 ? 4 : parentId + 1].active = true;
     }
 
-    option[parentId === 4 ? 4 : parentId + 1].active = true;
+    const target = document.getElementById(
+      `${parentId === 2 ? parentId + 2 : parentId + 1}`
+    );
+
+    if (target) {
+      window.scrollTo({
+        top: target?.getBoundingClientRect().top + window.scrollY - 15,
+        behavior: "smooth",
+      });
+    }
 
     setFinalData({ ...finalData, [parentId]: title });
     setOption([...option]);
@@ -182,52 +197,57 @@ const Subscribe = () => {
           <div className="container">
             <div className="row">
               <div className="pick-plan-area__sidebar">
-                <div className="list-links">
-                  <a
-                    href="#1"
-                    className={`list-link ${
-                      option[0].active === true ? "active" : ""
-                    }`}
-                  >
-                    <span>01</span> Preferences
-                  </a>
+                <Sticky
+                  boundaryElement=".plan"
+                  style={{ position: "relative" }}
+                >
+                  <div className="list-links">
+                    <a
+                      href="#1"
+                      className={`list-link ${
+                        option[0].active === true ? "active" : ""
+                      }`}
+                    >
+                      <span>01</span> Preferences
+                    </a>
 
-                  <a
-                    href="#2"
-                    className={`list-link ${
-                      option[1].active === true ? "active" : ""
-                    }`}
-                  >
-                    <span>02</span> Bean Type
-                  </a>
+                    <a
+                      href="#2"
+                      className={`list-link ${
+                        option[1].active === true ? "active" : ""
+                      }`}
+                    >
+                      <span>02</span> Bean Type
+                    </a>
 
-                  <a
-                    href="#3"
-                    className={`list-link ${
-                      option[2].active === true ? "active" : ""
-                    }`}
-                  >
-                    <span>03</span> Quantity
-                  </a>
+                    <a
+                      href="#3"
+                      className={`list-link ${
+                        option[2].active === true ? "active" : ""
+                      }`}
+                    >
+                      <span>03</span> Quantity
+                    </a>
 
-                  <a
-                    href="#4"
-                    className={`list-link ${
-                      option[3].active === true ? "active" : ""
-                    }`}
-                  >
-                    <span>04</span> Grind Option
-                  </a>
+                    <a
+                      href="#4"
+                      className={`list-link ${
+                        option[3].active === true ? "active" : ""
+                      }`}
+                    >
+                      <span>04</span> Grind Option
+                    </a>
 
-                  <a
-                    href="#5"
-                    className={`list-link ${
-                      option[4].active === true ? "active" : ""
-                    }`}
-                  >
-                    <span>05</span> Deliveries
-                  </a>
-                </div>
+                    <a
+                      href="#5"
+                      className={`list-link ${
+                        option[4].active === true ? "active" : ""
+                      }`}
+                    >
+                      <span>05</span> Deliveries
+                    </a>
+                  </div>
+                </Sticky>
               </div>
               <div className="pick-plan-area__content">
                 <div className="plan">
@@ -282,6 +302,7 @@ const Subscribe = () => {
                     </div>
                   ))}
                 </div>
+
                 <div className="order-summary">
                   <span className="order">ORDER SUMMARY</span>
                   <blockquote>
